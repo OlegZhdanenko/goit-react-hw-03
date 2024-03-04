@@ -10,7 +10,7 @@ export default function ContactForm({ onAdd }) {
   
   const FeedbackSchema = Yup.object().shape({
   name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-  number: Yup.number( "Must be a valid number!").min(3, "Too Short!").required("Required")
+  number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
   
 });
     const initialValues = {
@@ -30,10 +30,10 @@ export default function ContactForm({ onAdd }) {
             <Form className={css.list}> 
                 <label htmlFor={nameFieldId} className={css.label}>Name</label>
           <Field type="text" name="name" id={nameFieldId}  className={css.input}/>
-          <ErrorMessage name="name" as="p" className={css.messege}/>
+          <ErrorMessage name="name" component="span" className={css.messege}/>
                 <label htmlFor={phoneFieldId} className={css.label}>Number</label>
           <Field type="tell" name="number"  className={css.input}/>
-          <ErrorMessage name="number" as="p" className={css.messege}/>
+          <ErrorMessage name="number" component="span" className={css.messege}/>
                 <button className={css.btn} type="submit">Add contact</button>
             </Form>
         </Formik>
